@@ -3,6 +3,15 @@
     nuxt
 </template>
 
+<script lang="ts">
+import { Component, Vue } from 'nuxt-property-decorator'
+
+@Component
+class DefaultLayout extends Vue {}
+
+export default DefaultLayout
+</script>
+
 <style lang="sass">
 html
   font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif

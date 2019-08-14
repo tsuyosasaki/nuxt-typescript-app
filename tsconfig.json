@@ -20,10 +20,10 @@
     "baseUrl": ".",
     "paths": {
       "~/*": [
-        "./*"
+        "src/*"
       ],
       "@/*": [
-        "./*"
+        "src/*"
       ]
     },
     "allowJs": true,
@@ -35,13 +35,11 @@
     ]
   },
   "include": [
-    "types/**/*",
-    "components/**/*",
-    "layouts/**/*",
-    "middleware/**/*",
-    "pages/**/*",
-    "plugins/**/*",
-    "server/**/*",
-    "store/**/*"
+    "src/**/*.ts",
+    "src/**/*.vue"
+  ],
+  "exclude": [
+    "node_modules",
+    "stories"
   ]
 }

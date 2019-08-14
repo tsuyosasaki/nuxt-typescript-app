@@ -1,11 +1,9 @@
 <template lang="pug">
   .container
     div
-      logo
-      h1.title
-        nuxt-typescript-app
-      h2.subtitle
-        | My stellar Nuxt.js project
+      Logo
+      h1.title nuxt-typescript-app
+      h2.subtitle My stellar Nuxt.js project
       .links
         a(
           href="https://nuxtjs.org/"
@@ -19,17 +17,20 @@
         ) GitHub
 </template>
 
-<script>
-import Logo from '~/components/Logo.vue'
+<script lang="ts">
+import { Component, Vue } from 'nuxt-property-decorator'
+import Logo from '@/components/Logo.vue'
 
-export default {
+@Component({
   components: {
     Logo
   }
-}
+})
+// @Component
+export default class IndexPage extends Vue {}
 </script>
 
-<style lang="sass" scoped>
+<style lang="sass">
 .container
   margin: 0 auto
   min-height: 100vh
