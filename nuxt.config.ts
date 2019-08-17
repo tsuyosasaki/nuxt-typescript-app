@@ -28,6 +28,7 @@ export default {
    ** Plugins to load before mounting the App
    */
   plugins: [],
+  // plugins: [{ src: '@/plugins/libraries/vue-lazy-load', mode: 'client' }],
   /*
    ** Nuxt.js modules
    */

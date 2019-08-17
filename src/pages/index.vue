@@ -1,45 +1,49 @@
 <template lang="pug">
   .container-block
     template(v-if="items && items.length > 0")
+      p.main-visual メインビジュアル
       ul.list-wrap
-        li.list-item(v-for="item in items" :key="item.id")
-          h4.title
-            span {{item.title}}
-            small by {{item.user.id}}
-          .item
-            .user
-              img.image(:src="item.user.profile_image_url" alt="")
-            .item-block
-              div.description {{item.body.slice(0, 130)}} ...
-              p.link
-                a(:href="item.url") {{item.url}}
+        ListItem(
+          v-for="(item, index) in items"
+          :key="item.id"
+          :item="item"
+        )
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'nuxt-property-decorator'
+// import { Context } from '@nuxt/vue-app'
+import VueLazyload from 'vue-lazyload'
+import ListItem from '@/components/ListItem.vue'
 
-@Component
+// オプションを変えて使うのでグローバルで注入せず各コンポーネントで設定する
+Vue.use(VueLazyload, {
+  observer: true,
+  lazyComponent: true
+})
+
+@Component({
+  components: {
+    ListItem
+  }
+})
 export default class IndexPage extends Vue {
-  // public items = ''
+  public items = {}
 
   /** ライフサイクル */
-  public async asyncData({ query, $axios }): Promise<any> {
+  // public async mounted(): Promise<void> {
+  //   this.items = await this.$axios.$get(
+  //     'http://qiita.com/api/v2/items?query=tag:nuxt.js'
+  //   )
+  // }
+
+  /** ライフサイクル */
+  public async asyncData({ $axios }: any): Promise<any> {
     const items = await $axios.$get(
       'http://qiita.com/api/v2/items?query=tag:nuxt.js'
     )
 
-    console.log('items', items)
-
     return { items }
-  }
-
-  public description(item: Record<string | number, any>): string {
-    console.log('description item', item)
-    if (!item) {
-      return ''
-    }
-
-    return item.body.slice(0, 130)
   }
 }
 </script>
@@ -48,6 +52,9 @@ export default class IndexPage extends Vue {
 .container-block
   min-height: 100vh
   padding: 16px
+
+.main-visual
+  padding: 30vh 0
 
 .list-item + .list-item
   margin: 16px 0
