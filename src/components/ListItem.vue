@@ -15,25 +15,24 @@
 
 <script lang="ts">
 import { Component, Vue, Prop } from 'nuxt-property-decorator'
-// import lazyComponent from '@/components/ListItem.vue'
-// import lazyComponent from 'vue-lazyload'
+import { IQiitaSearch } from '@/interfaces/api/IQiitaSearch'
 
-// @Component({
-//   components: {
-//     lazyComponent
-//   }
-// })
 @Component
 export default class ListItem extends Vue {
   /** 記事 */
   @Prop({ type: Object, required: true })
-  public item: any
+  public item: IQiitaSearch
 
-  public mounted() {
-    console.log('this.item', this.item)
+  // @Watch('item')
+  // public onChangeItem(): void {
+  //   console.log('this.item', this.item)
+  // }
+
+  public mounted(): void {
+    console.log('ListItem.vue this.item', this.item)
   }
 
-  public onLazyShow() {
+  public onLazyShow(): void {
     console.log('lazy-show!')
   }
 }

@@ -27,15 +27,18 @@ export default {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: [],
-  // plugins: [{ src: '@/plugins/libraries/vue-lazy-load', mode: 'client' }],
+  plugins: [
+    '@/plugins/constants-inject', '@/plugins/libraries/vue-lazy-load',
+    { src: '@/plugins/libraries/vue-lazy-load', mode: 'client' }
+  ],
   /*
    ** Nuxt.js modules
    */
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
-    '@nuxtjs/eslint-module'
+    '@nuxtjs/eslint-module',
+    'nuxt-client-init-module'
   ],
   /*
    ** Axios module configuration
