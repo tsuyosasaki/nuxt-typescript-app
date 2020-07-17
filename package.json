@@ -19,7 +19,7 @@
     "@nuxtjs/axios": "^5.3.6",
     "@types/webpack": "^4.39.1",
     "helpful-decorators": "^2.0.5",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.19",
     "nuxt": "^2.0.0",
     "nuxt-client-init-module": "^0.1.5",
     "nuxt-property-decorator": "^2.3.0",
